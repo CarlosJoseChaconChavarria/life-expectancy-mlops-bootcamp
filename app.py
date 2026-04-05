@@ -11,12 +11,12 @@ st.markdown("""
 
     html, body, [class*="css"] {
         font-family: 'Nunito', sans-serif;
-        background-color: #fdf6f0;
+        background-color: #ffffff;
         color: #4a4a4a;
     }
 
     .stApp {
-        background-color: #fdf6f0;
+        background-color: #ffffff;
     }
 
     h1 {
