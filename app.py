@@ -11,28 +11,28 @@ st.markdown("""
 
     html, body, [class*="css"] {
         font-family: 'Share Tech Mono', monospace;
-        background-color: #0a0e1a;
-        color: #00f5ff;
+        background-color: #121212;
+        color: #e0e0e0;
     }
 
     .stApp {
-        background: linear-gradient(135deg, #0a0e1a 0%, #0d1b2a 50%, #0a0e1a 100%);
+        background: linear-gradient(135deg, #121212 0%, #1e1e1e 50%, #121212 100%);
     }
 
     h1 {
         font-family: 'Orbitron', monospace !important;
-        color: #00f5ff !important;
-        text-shadow: 0 0 20px #00f5ff, 0 0 40px #00f5ff88;
+        color: #ffffff !important;
+        text-shadow: 0 0 10px #ffffff44;
         letter-spacing: 3px;
         text-align: center;
     }
 
     p, .stMarkdown {
-        color: #7fdbff;
+        color: #b0b0b0;
     }
 
     div[data-testid="stNumberInput"] label {
-        color: #00f5ff !important;
+        color: #e0e0e0 !important;
         font-family: 'Share Tech Mono', monospace !important;
         letter-spacing: 1px;
         text-transform: uppercase;
@@ -40,22 +40,22 @@ st.markdown("""
     }
 
     div[data-testid="stNumberInput"] input {
-        background-color: #0d1b2a !important;
-        color: #00f5ff !important;
-        border: 1px solid #00f5ff55 !important;
+        background-color: #1e1e1e !important;
+        color: #e0e0e0 !important;
+        border: 1px solid #444444 !important;
         border-radius: 4px !important;
         font-family: 'Share Tech Mono', monospace !important;
     }
 
     div[data-testid="stNumberInput"] input:focus {
-        border: 1px solid #00f5ff !important;
-        box-shadow: 0 0 10px #00f5ff55 !important;
+        border: 1px solid #888888 !important;
+        box-shadow: 0 0 8px #88888844 !important;
     }
 
     .stButton > button {
-        background: transparent !important;
-        color: #00f5ff !important;
-        border: 1px solid #00f5ff !important;
+        background: #1e1e1e !important;
+        color: #e0e0e0 !important;
+        border: 1px solid #555555 !important;
         border-radius: 4px !important;
         font-family: 'Orbitron', monospace !important;
         letter-spacing: 2px;
@@ -63,31 +63,29 @@ st.markdown("""
         width: 100%;
         padding: 0.75rem;
         transition: all 0.3s ease;
-        box-shadow: 0 0 10px #00f5ff33;
     }
 
     .stButton > button:hover {
-        background: #00f5ff22 !important;
-        box-shadow: 0 0 20px #00f5ff88, inset 0 0 20px #00f5ff11 !important;
+        background: #2a2a2a !important;
+        border-color: #aaaaaa !important;
+        box-shadow: 0 0 12px #ffffff22 !important;
     }
 
     .stSuccess {
-        background-color: #001a1a !important;
-        border: 1px solid #00f5ff !important;
+        background-color: #1a1a1a !important;
+        border: 1px solid #555555 !important;
         border-radius: 4px !important;
-        color: #00f5ff !important;
-        box-shadow: 0 0 20px #00f5ff44;
+        color: #e0e0e0 !important;
     }
 
     .stSuccess p {
-        color: #00f5ff !important;
+        color: #ffffff !important;
         font-family: 'Orbitron', monospace !important;
         font-size: 1.1rem;
-        text-shadow: 0 0 10px #00f5ff;
     }
 
     hr {
-        border-color: #00f5ff33;
+        border-color: #333333;
     }
 </style>
 """, unsafe_allow_html=True)
