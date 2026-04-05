@@ -7,116 +7,115 @@ st.set_page_config(page_title="Life Expectancy Predictor", page_icon="🌍", lay
 
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
     html, body, [class*="css"] {
-        font-family: 'Share Tech Mono', monospace;
-        background-color: #121212;
-        color: #e0e0e0;
+        font-family: 'Inter', sans-serif;
+        background-color: #f5f5f5;
+        color: #1a1a1a;
     }
 
     .stApp {
-        background: linear-gradient(135deg, #121212 0%, #1e1e1e 50%, #121212 100%);
+        background-color: #f5f5f5;
     }
 
     h1 {
-        font-family: 'Orbitron', monospace !important;
-        color: #ffffff !important;
-        text-shadow: 0 0 10px #ffffff44;
-        letter-spacing: 3px;
+        color: #1a1a1a !important;
+        font-weight: 700 !important;
+        text-align: center;
+        letter-spacing: 1px;
+    }
+
+    p, .stMarkdown p {
+        color: #555555;
         text-align: center;
     }
 
-    p, .stMarkdown {
-        color: #b0b0b0;
-    }
-
     div[data-testid="stNumberInput"] label {
-        color: #e0e0e0 !important;
-        font-family: 'Share Tech Mono', monospace !important;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        font-size: 0.85rem;
+        color: #333333 !important;
+        font-weight: 600 !important;
+        font-size: 0.9rem !important;
     }
 
     div[data-testid="stNumberInput"] input {
-        background-color: #1e1e1e !important;
-        color: #e0e0e0 !important;
-        border: 1px solid #444444 !important;
-        border-radius: 4px !important;
-        font-family: 'Share Tech Mono', monospace !important;
+        background-color: #ffffff !important;
+        color: #1a1a1a !important;
+        border: 1.5px solid #cccccc !important;
+        border-radius: 8px !important;
     }
 
     div[data-testid="stNumberInput"] input:focus {
-        border: 1px solid #888888 !important;
-        box-shadow: 0 0 8px #88888844 !important;
+        border-color: #888888 !important;
+        box-shadow: 0 0 0 3px #88888822 !important;
     }
 
     .stButton > button {
-        background: #1e1e1e !important;
-        color: #e0e0e0 !important;
-        border: 1px solid #555555 !important;
-        border-radius: 4px !important;
-        font-family: 'Orbitron', monospace !important;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        width: 100%;
-        padding: 0.75rem;
-        transition: all 0.3s ease;
+        background-color: #333333 !important;
+        color: #ffffff !important;
+        border: none !important;
+        border-radius: 8px !important;
+        font-family: 'Inter', sans-serif !important;
+        font-weight: 600 !important;
+        font-size: 1rem !important;
+        padding: 0.65rem 2.5rem !important;
+        transition: all 0.2s ease;
     }
 
     .stButton > button:hover {
-        background: #2a2a2a !important;
-        border-color: #aaaaaa !important;
-        box-shadow: 0 0 12px #ffffff22 !important;
+        background-color: #111111 !important;
+        box-shadow: 0 4px 12px #00000033 !important;
     }
 
     .stSuccess {
-        background-color: #1a1a1a !important;
-        border: 1px solid #555555 !important;
-        border-radius: 4px !important;
-        color: #e0e0e0 !important;
+        background-color: #eeeeee !important;
+        border: 1.5px solid #aaaaaa !important;
+        border-radius: 8px !important;
     }
 
     .stSuccess p {
-        color: #ffffff !important;
-        font-family: 'Orbitron', monospace !important;
-        font-size: 1.1rem;
+        color: #1a1a1a !important;
+        font-weight: 700 !important;
+        font-size: 1.1rem !important;
+        text-align: center;
     }
 
     hr {
-        border-color: #333333;
+        border-color: #dddddd;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# 1. LOAD THE SAVED BRAIN
+# Load model
 model = joblib.load('life_expectancy_model.pkl')
 scaler = joblib.load('scaler.pkl')
 
-# 2. DESIGN THE WEBSITE UI
-st.title("LIFE EXPECTANCY PREDICTOR")
-st.markdown("<p style='text-align:center; letter-spacing:2px;'>Enter parameters to compute life expectancy forecast</p>", unsafe_allow_html=True)
+# Header
+st.title("🌍 Life Expectancy Predictor")
+st.markdown("Enter the details below to predict the life expectancy of a country.")
 st.markdown("---")
 
-# 3. CREATE INPUT BOXES FOR THE USER
-col1, col2 = st.columns(2)
+# Two-column input layout
+col1, col2 = st.columns(2, gap="medium")
 
 with col1:
     mortality = st.number_input("Adult Mortality (per 1000)", min_value=0, max_value=1000, value=200)
-    gdp = st.number_input("GDP of the Country", min_value=1, max_value=150000, value=5000)
+    alcohol = st.number_input("Alcohol Consumption (liters per capita)", min_value=0.0, max_value=20.0, value=5.0)
 
 with col2:
-    alcohol = st.number_input("Alcohol Consumption (liters/capita)", min_value=0.0, max_value=20.0, value=5.0)
+    gdp = st.number_input("GDP of the country", min_value=1, max_value=150000, value=5000)
     schooling = st.number_input("Average Years of Schooling", min_value=0.0, max_value=20.0, value=10.0)
 
 st.markdown("---")
 
-# 4. THE "PREDICT" BUTTON
-if st.button("[ COMPUTE FORECAST ]"):
+# Centered predict button
+col_left, col_center, col_right = st.columns([1, 2, 1])
+with col_center:
+    predict = st.button("Predict Life Expectancy")
+
+if predict:
     gdp_log = np.log1p(gdp)
     inputs = pd.DataFrame([[mortality, alcohol, gdp_log, schooling]],
                           columns=['Adult Mortality', 'Alcohol', 'GDP_transformed', 'Schooling'])
     inputs_scaled = scaler.transform(inputs)
     prediction = model.predict(inputs_scaled)
-    st.success(f"PREDICTED LIFE EXPECTANCY: {prediction[0]:.2f} YEARS")
+    st.success(f"The predicted Life Expectancy is: {prediction[0]:.2f} years")
